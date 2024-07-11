@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "c:/GitRepo/Design-Patterns-C/workspace_book",
-      "program": "c:/GitRepo/Design-Patterns-C/workspace_book/build/Debug/outDebug",
+      "cwd": "c:/GitRepo/Design-Patterns-C/workspace_book/Ch_1/Sensor",
+      "program": "c:/GitRepo/Design-Patterns-C/workspace_book/Ch_1/Sensor/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
