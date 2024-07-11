@@ -1,8 +1,10 @@
 #ifndef MotorData_H
 #define MotorData_H
+
 #include "HWProxyExample.h"
 
 typedef struct MotorData MotorData;
+
 struct MotorData {
     unsigned char on_off;
     DirectionType direction;

@@ -1,16 +1,13 @@
 #ifndef Sensor_H
 #define Sensor_H
-
 #include<stdio.h>
-#include<stdlib.h>
-
 /*## class Sensor */
 typedef struct Sensor Sensor;
 
 struct Sensor {
-int filterFrequency;
-int updateFrequency;
-int value;
+    int filterFrequency;
+    int updateFrequency;
+    int value;
 };
 
 int Sensor_getFilterFrequency(const Sensor* const me);

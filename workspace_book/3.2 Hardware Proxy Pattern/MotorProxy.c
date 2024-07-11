@@ -2,70 +2,84 @@
 /* class MotorProxy */
 /* This function takes a MotorData structure and creates */
 /* a device-specific unsigned int in device native format. */
+
 static unsigned int marshal(MotorProxy* const me, const struct MotorData* mData);
 static struct MotorData* unmarshal(MotorProxy* const me, unsigned int encodedMData);
-void MotorProxy_Init(MotorProxy* const me) { me->motorAddr = NULL;
+
+void MotorProxy_Init(MotorProxy* const me) { 
+    me -> motorAddr = NULL;
 }
+
 void MotorProxy_Cleanup(MotorProxy* const me) {
 }
+
 DirectionType* MotorProxy_accessMotorDirection(MotorProxy* const me) {
-MotorData mData;
-if (!me->motorData) return 0;
-mData = unmarshall(*me->motorAddr);
-return mData.direction;
+    MotorData mData;
+    if (!me -> motorData) 
+        return 0;
+        mData = unmarshall(*me->motorAddr);
+    return mData.direction;
 }
+
 unsigned int MotorProxy_accessMotorSpeed(MotorProxy* const me) {
-MotorData mData;
-if (!me->motorData) return 0;
-mData = unmarshall(*me->motorAddr);
-return mData.speed;
+    MotorData mData;
+    if (!me->motorData) return 0;
+        mData = unmarshall(*me->motorAddr);
+    return mData.speed;
 }
+
 unsigned int MotorProxy_aceessMotorState(MotorProxy* const me) {
-MotorData mData;
-if (!me->motorData) return 0;
-mData = unmarshall(*me->motorAddr);
-return mData.errorStatus;
+    MotorData mData;
+    if (!me->motorData) return 0;
+        mData = unmarshall(*me->motorAddr);
+    return mData.errorStatus;
 }
+
 void MotorProxy_clearErrorStatus(MotorProxy* const me) {
-if (!me->motorData) return;
-*me->motorAddr &= 0xFF;
+    if (!me->motorData) return;
+        *me->motorAddr &= 0xFF;
 }
+
 void MotorProxy_configure(MotorProxy* const me, unsigned int length, unsigned int* location) {
-me->rotaryArmLength = length;
-me->motorAddr = location;
+    me->rotaryArmLength = length;
+    me->motorAddr = location;
 }
+
 void MotorProxy_disable(MotorProxy* const me) {
 // and with all bits set except for the enable bit
-if (!me->motorData) return;
-me->MotorAddr & = 0xFFFE;
+    if (!me->motorData) return;
+        me->MotorAddr & = 0xFFFE;
 }
 
 void MotorProxy_enable(MotorProxy* const me) {
-if (!me->motorData) return;
-*me->motorAddr |= 1;
+    if (!me->motorData) return;
+        *me->motorAddr |= 1;
 }
 void MotorProxy_initialize(MotorProxy* const me) {
-MotorData mData;
-if (!me->motorData) return;
-mData.on_off = 1;
-mData.direction = 0;
-mData.speed = 0;
-mData.errorStatus = 0;
-mData.noPowerError) = 0;
-mData.noTorqueError) = 0;
-mData.BITError) = 0;
-mData.overTemperatureError) = 0;
-mData.reservedError1) = 0;
-mData.reservedError2) = 0;
-Data.unknownError) = 0;
-*me->motorAddr = marshall(mData);
+    MotorData mData;
+        if (!me->motorData) return;
+            mData.on_off = 1;
+
+    mData.direction = 0;
+    mData.speed = 0;
+    mData.errorStatus = 0;
+    mData.noPowerError) = 0;
+    mData.noTorqueError) = 0;
+    mData.BITError) = 0;
+    mData.overTemperatureError) = 0;
+    mData.reservedError1) = 0;
+    mData.reservedError2) = 0;
+    Data.unknownError) = 0;
+
+    *me->motorAddr = marshall(mData);
 }
-void MotorProxy_writeMotorSpeed(MotorProxy* const me, const DirectionType* direction,
-unsigned int speed) {
-MotorData mData
-double dPi, dArmLength, dSpeed, dAdjSpeed;
-if (!me->motorData) return; mData = unmarshall(*me->motorAddr); mData.direction =
-direction;
+void MotorProxy_writeMotorSpeed(MotorProxy* const me, const DirectionType* direction, unsigned int speed) {
+    MotorData mData
+    double dPi, dArmLength, dSpeed, dAdjSpeed;
+
+    if (!me->motorData) return; mData = unmarshall(*me->motorAddr); 
+        mData.direction = direction;
+
 // ok, let’s do some math to adjust for
 // the length of the rotary arm times 10
 if (me->rotaryArmLength > 0) {
