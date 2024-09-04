@@ -33,7 +33,7 @@ return 0;
 };
 
 /*Another potential problem with using bit fields is that it is impossible to cast between a scalar
-  and a user-defined struct. Thus, the following is disallowed5:
+  and a user-defined struct. Thus, the following is disallowed *5:
 
     Unsigned char f;
     f = 0xF0;
